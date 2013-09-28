@@ -12,8 +12,10 @@
 		"connect-mongo": "~0.3.2",
 		"mongoose": "~3.6.11",
 		"async": "~0.2.8",
-		"passport": "~0.1.17",
-		"passport-local": "~0.1.6",
+		"passport": "latest",
+		"passport-local": "latest",
+		"passport-facebook": "latest",
+		"passport-twitter": "latest",
 		"bcrypt-nodejs": "*"
 	},
 	"devDependencies": {
