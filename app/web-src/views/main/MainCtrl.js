@@ -23,12 +23,12 @@ angular.module('webapp')
 
 	$scope.connectTwitter = function() {
 		console.log("Connecting to twitter");
-
+		$location.path('/auth/twitter');
 	};
 
 	$scope.connectFacebook = function() {
 		console.log("Connecting to facebook");
-
+		$location.path('/auth/facebook');
 	};
 
 
