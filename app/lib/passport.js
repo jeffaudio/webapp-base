@@ -8,12 +8,12 @@ var BAD_LOGIN_STRING = "Invalid username or password.";
 // Twitter Credentials
 var TWITTER_CONSUMER_KEY = "",
     TWITTER_CONSUMER_SECRET = "",
-    TWITTER_CALLBACK_URL = "";
+    TWITTER_CALLBACK_URL = "/auth/twitter/callback";
 
 // Facebook Credentials
 var FACEBOOK_APP_ID = "",
     FACEBOOK_APP_SECRET = "",
-    FACEBOOK_CALLBACK_URL = "";
+    FACEBOOK_CALLBACK_URL = "/auth/facebook/callback";
 
 module.exports = function (app, User) 
 	passport.serializeUser(function (user, done) { done(null, user.id); });
