@@ -2,6 +2,7 @@ module.exports = function (app) {
 
 	// Return the index to the angular project.
 	function angularIndex(req, res, next) {
+		console.log(req.originalUrl);
 		res.sendfile(app.get('web') + '/index.html');
 	}
 
