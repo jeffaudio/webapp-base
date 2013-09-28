@@ -1,47 +1,44 @@
 {
-  "name": "webapp",
-  "version": "0.2.0",
-  "directories": {},
-  "engines": {
-    "node": ">=0.8.0",
-    "npm": ">=1.1"
-  },
-  "dependencies": {
-    "express": "~3.2.4",
-    "express-train": "~1.0.2",
-    "connect-timeout": "0.0.1",
-    "connect-mongo": "~0.3.2",
-    "mongoose": "~3.6.11",
-    "async": "~0.2.8",
-    "passport": "~0.1.17",
-    "passport-local": "~0.1.6",
-    "winston": "~0.7.1",
-    "express-trace": "0.0.3",
-    "bcrypt-nodejs": "*"
-  },
-  "devDependencies": {
-    "mocha": "latest",
-    "grunt": "latest",
-    "grunt-contrib-jshint": "latest",
-    "grunt-contrib-nodeunit": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-qunit": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-contrib-concat": "latest",
-    "grunt-contrib-copy": "latest",
-    "grunt-contrib-cssmin": "latest",
-    "grunt-contrib-watch": "latest",
-    "grunt-usemin": "latest",
-    "grunt-sass": "latest"
+	"name": "webapp",
+	"version": "0.2.0",
+	"directories": {},
+	"engines": {
+		"node": ">=0.8.0",
+		"npm": ">=1.1"
+	},
+	"dependencies": {
+		"express": "3.x",
+		"connect-timeout": "0.0.1",
+		"connect-mongo": "~0.3.2",
+		"mongoose": "~3.6.11",
+		"async": "~0.2.8",
+		"passport": "~0.1.17",
+		"passport-local": "~0.1.6",
+		"bcrypt-nodejs": "*"
+	},
+	"devDependencies": {
+		"mocha": "latest",
+		"grunt": "latest",
+		"grunt-contrib-jshint": "latest",
+		"grunt-contrib-nodeunit": "latest",
+		"grunt-contrib-uglify": "latest",
+		"grunt-contrib-qunit": "latest",
+		"grunt-contrib-watch": "latest",
+		"grunt-contrib-concat": "latest",
+		"grunt-contrib-copy": "latest",
+		"grunt-contrib-cssmin": "latest",
+		"grunt-contrib-watch": "latest",
+		"grunt-usemin": "latest",
+		"grunt-sass": "latest"
 
-  },
-  "main": "./app/index.js",
-  "scripts": {
-    "start": "./app/index.js"
-  },
-  "constants": {
-    "title": "Clicker Tracker",
-    "session_length": 1209600000,
-    "request_timeout": 10000
-  }
+	},
+	"main": "./app/index.js",
+	"scripts": {
+		"start": "./app/index.js"
+	},
+	"constants": {
+		"title": "Clicker Tracker",
+		"session_length": 1209600000,
+		"request_timeout": 10000
+	}
 }
