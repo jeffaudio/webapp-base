@@ -1,7 +1,7 @@
 
-var express = require('express');
-var http = require('http');
-var passport = require('passport');
+var express = require('express'),
+    http = require('http'),
+    passport = require('passport');
 
 var app = express();
 
@@ -19,7 +19,9 @@ app.use(passport.session());
 app.use(app.router);
 
 // Routes
-require('./lib/routes')(app);
+var userController = require('./controllers/userController.js')();
+
+require('./lib/routes')(app, userController, passport);
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));

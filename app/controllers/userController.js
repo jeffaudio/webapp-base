@@ -1,3 +1,5 @@
+var User = require('../models/User.js');
+
 // Get the current user if there is one.
 function getCurrent(req, res, next) {
 	if (!req.user) {
@@ -16,11 +18,8 @@ function getCurrent(req, res, next) {
 }
 
 
-
-module.exports = function (app, User, passport) {
-	var userController = {
-		getCurrent: [getCurrent],
-	}
-
-	return userController;
-}
+module.exports = function () {
+	return {
+		getCurrent: getCurrent,
+	};
+};

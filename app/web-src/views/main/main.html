@@ -2,6 +2,15 @@
 	<h2>Welcome to WebApp</h2>
 </header>
 
+<h2>{{loggedUser.username}}</h2>
+<ul>
+	<li>User ID: {{loggedUser._id}}
+	<li>Facebook ID: {{loggedUser.facebook.facebookId}}
+	<li>Facebook Access Token: {{loggedUser.facebook.accessToken}}
+	<li>Twitter ID: {{loggedUser.twitter.twitterId}}
+	<li>Twitter Access Token: {{logged.twitter.accessToken}}
+</ul>
+
 <p>{{statusMessage}}</p>
 
 <h3>Login</h3>

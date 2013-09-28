@@ -1,21 +1,21 @@
 var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs');
 
-module.exports = function(app) {
+module.exports = function() {
 
 	var UserSchema = mongoose.Schema({
 		username: {type: String, required: true, unique: true},
-		hashed_password: {type: String}
+		hashed_password: {type: String},
 
-		facebook: [
+		facebook: {
 			facebookId: {type: String, unique: true},
 			accessToken: {type: String}
-		],
+		},
 
-		twitter: [
+		twitter: {
 			twitterId: {type: String, unique: true},
 			accessToken: {type: String}
-		]
+		}
 
 		// Add extra user fields here.
 	});
