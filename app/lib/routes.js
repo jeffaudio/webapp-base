@@ -14,7 +14,3 @@ module.exports = function (app) {
 	// Default action is to load the angular project.
 	app.get('*', angularIndex);
 };
-
-
-
-
