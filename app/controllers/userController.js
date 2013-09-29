@@ -3,6 +3,10 @@ var User = require('../models/User').User;
 module.exports = function(passport) {
 	// Get the current user if there is one.
 	function getCurrent(req, res, next) {
+		console.log("Looking up current user.");
+		console.log(req.user);
+		console.log(req.session);
+
 		if (!req.user) {
 			res.send(null);
 		} else {
@@ -43,8 +47,9 @@ module.exports = function(passport) {
 
 				// If there is other user setup tasks to do,
 				// they can be done here.
-
-				return res.send('Ok', 200);
+				req.logIn(user, function () {
+					res.send('Ok', 200);
+				});
 			});
 		});
 	}
@@ -60,10 +65,58 @@ module.exports = function(passport) {
 		}
 	}
 
+	function disconnectFacebook(req, res, next) {
+		console.log("Disconnecting facebook.");
+		if (!req.user) {
+			res.send(null);
+		} else {
+			User.findOne({_id: req.user.id}, function(err, user) {
+				if (err) return next(err);
+				if (user) {
+					user.facebook = {
+						facebookId: null,
+						accessToken: null
+					};
+					user.save(function(err, user) {
+						if (err) res.send(err);
+						else res.send(user);
+					});
+				} else {
+					res.send(400);
+				}
+			});
+		}
+	}
+
+	function disconnectTwitter(req, res, next) {
+		console.log("Disconnecting twitter.");
+		if (!req.user) {
+			res.send(null);
+		} else {
+			User.findOne({_id: req.user.id}, function(err, user) {
+				if (err) return next(err);
+				if (user) {
+					user.twitter = {
+						twitterId: null,
+						token: null
+					};
+					user.save(function(err, user) {
+						if (err) res.send(err);
+						else res.send(user);
+					});
+				} else {
+					res.send(400);
+				}
+			});
+		}
+	}
+
 	return {
 		getCurrent: getCurrent,
 		authenticate: authenticate,
 		register: register,
-		logout: logout
+		logout: logout,
+		disconnectFacebook: disconnectFacebook,
+		disconnectTwitter: disconnectTwitter
 	};
 };
