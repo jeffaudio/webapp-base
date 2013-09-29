@@ -12,7 +12,8 @@ var UserSchema = new mongoose.Schema({
 
 	twitter: {
 		twitterId: {type: String},
-		token: {type: String}
+		token: {type: String},
+		tokenSecret: {type: String}
 	}
 
 	// Add extra user fields here.

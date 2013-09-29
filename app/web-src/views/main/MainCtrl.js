@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('webapp')
-.controller('MainCtrl', function ($scope, $http, $rootScope) {
+.controller('MainCtrl', function ($scope, $http, $rootScope, $location, $window) {
 	$scope.user = {};
 	$scope.newUser = {};
 	$scope.statusMessage = "";
@@ -32,6 +32,7 @@ angular.module('webapp')
 			.success(function(data) {
 				$rootScope.user = data;
 				$location.path('/');
+				$window.reload();
 			})
 			.error(function(data, status, headers, config) {
 				$scope.statusMessage = data;

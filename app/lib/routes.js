@@ -20,11 +20,13 @@ module.exports = function (app, userController, passport) {
 	app.get('/auth/facebook', passport.authenticate('facebook'));
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', {failureRedirect: LOGIN_URL}), 
 		function(req, res) { res.redirect('/'); });
+	app.post('/auth/facebook/disconnect', userController.disconnectFacebook);
 
 	// Twitter Authenticate
-	app.get('/auth/twitter', passport.authenticate('twitter'));
+	app.get('/auth/twitter', passport.authorize('twitter'));
 	app.get('/auth/twitter/callback', passport.authenticate('twitter', {failureRedirect: LOGIN_URL}),
 		function(req, res) { res.redirect('/'); });
+	app.post('/auth/twitter/disconnect', userController.disconnectTwitter);
 
 	// Place other routes here.
 
