@@ -1,6 +1,6 @@
 var LOGIN_URL = "/login";
 
-module.exports = function (app, userController, passport) {
+module.exports = function (app, userController, shareController, passport) {
 
 	// Return the index to the angular project.
 	function angularIndex(req, res, next) {
@@ -11,13 +11,15 @@ module.exports = function (app, userController, passport) {
 	// Index path goes to the angular project.
 	app.get('/', angularIndex);
 
+	app.post('/share', shareController.share)
+
 	app.get('/user', userController.getCurrent);
 	app.post('/user/login', userController.authenticate);
 	app.post('/user/register', userController.register);
 	app.post('/user/logout', userController.logout);
 
 	// Facebook Authentication
-	app.get('/auth/facebook', passport.authenticate('facebook'));
+	app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['publish_actions']}));
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', {failureRedirect: LOGIN_URL}), 
 		function(req, res) { res.redirect('/'); });
 	app.post('/auth/facebook/disconnect', userController.disconnectFacebook);

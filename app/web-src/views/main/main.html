@@ -33,3 +33,13 @@
 <p><a href="/auth/facebook" target="_self">Connect with Facebook</a>
 
 <p><button ng-click="$root.logout()">Logout</button>
+
+<form name="share-form">
+	<textarea ng-model="shareMessage"></textarea>
+	<p>
+	<input type="checkbox" ng-model="shareOptions.facebook">Facebook</input>
+	<input type="checkbox" ng-model="shareOptions.twitter">Twitter</input>
+
+	<button ng-click="share(shareMessage, shareOptions)">Share</button>
+</form>
+

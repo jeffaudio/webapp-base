@@ -16,7 +16,8 @@
 		"passport-local": "latest",
 		"passport-facebook": "latest",
 		"passport-twitter": "latest",
-		"bcrypt-nodejs": "*"
+		"bcrypt-nodejs": "*",
+		"twitter": "latest"
 	},
 	"devDependencies": {
 		"mocha": "latest",

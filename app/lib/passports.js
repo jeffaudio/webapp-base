@@ -2,18 +2,19 @@ var passport = require('passport'),
 		User = require('../models/User').User,
     LocalPassport = require('passport-local').Strategy,
     TwitterPassport = require('passport-twitter').Strategy,
-    FacebookPassport = require('passport-facebook').Strategy;
+    FacebookPassport = require('passport-facebook').Strategy,
+    config = require('../config');
 
 var BAD_LOGIN_STRING = "Invalid username or password.";
 
 // Twitter Credentials
-var TWITTER_CONSUMER_KEY = "",
-    TWITTER_CONSUMER_SECRET = "",
+var TWITTER_CONSUMER_KEY = config.twitter.consumer_key,
+    TWITTER_CONSUMER_SECRET = config.twitter.consumer_secret,
     TWITTER_CALLBACK_URL = "/auth/twitter/callback";
 
 // Facebook Credentials
-var FACEBOOK_APP_ID = "",
-    FACEBOOK_APP_SECRET = "",
+var FACEBOOK_APP_ID = config.facebook.app_id,
+    FACEBOOK_APP_SECRET = config.facebook.app_secret,
     FACEBOOK_CALLBACK_URL = "/auth/facebook/callback";
 
 module.exports = function (app) {
@@ -74,14 +75,16 @@ module.exports = function (app) {
 							username: profile.username,
 							twitter: {
 								twitterId: profile.id,
-								token: token
+								token: token,
+								tokenSecret: tokenSecret
 							}
 						});
 					} else {
 						console.log("Existing user.");
 						user.twitter = {
 							twitterId: profile.id,
-							token: token
+							token: token,
+							tokenSecret: tokenSecret
 						};
 					}
 

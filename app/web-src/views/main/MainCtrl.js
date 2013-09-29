@@ -7,6 +7,22 @@ angular.module('webapp')
 	$scope.newUser = {};
 	$scope.statusMessage = "";
 
+	$scope.shareMessage = "Hello from a test app!";
+	$scope.shareOptions = {
+		facebook: false,
+		twitter: false
+	};
+
+	$scope.share = function(message, networks) {
+		$http.post('/share', {message: message, networks: networks})
+			.success(function(data) {
+				$scope.statusMessage = data;
+			})
+			.error(function(data, status, headers, config) {
+				$scope.statusMessage = data;
+			});
+	};
+
 	$scope.login = function(user) {
 		console.log("Logging in as " + user.username);
 		$http.post('/user/login', $scope.user)
