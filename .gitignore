@@ -11,6 +11,7 @@ pids
 logs
 results
 app/web
+app/config.js
 node_modules/**/*
 
 npm-debug.log
