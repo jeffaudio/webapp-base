@@ -14,7 +14,6 @@ angular.module('webapp', [])
 		$locationProvider.html5Mode(true);
 	})
 .run(function ($rootScope, $http, $location) {
-/*
 	//global object representing the user who is logged in
 	$rootScope.user = {};
 
@@ -22,6 +21,7 @@ angular.module('webapp', [])
 	$http.get('/user')
 		.success(function (data) {
 			$rootScope.user = data;
+			console.log(data);
 		})
 		.error(function (data) {
 		});
@@ -32,5 +32,4 @@ angular.module('webapp', [])
 		$http.post('user/logout', {});
 		$location.path('/');
 	};
-	*/
 });

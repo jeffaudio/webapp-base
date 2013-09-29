@@ -2,13 +2,22 @@
 'use strict';
 
 angular.module('webapp')
-.controller('MainCtrl', function ($scope, $http, $rootScope, $location, $window) {
+.controller('MainCtrl', function ($scope, $http, $rootScope) {
 	$scope.user = {};
 	$scope.newUser = {};
 	$scope.statusMessage = "";
 
 	$scope.login = function(user) {
 		console.log("Logging in as " + user.username);
+		$http.post('/user/login', $scope.user)
+			.success(function(data) {
+				console.log("Logged in as " + data);
+				$rootScope.user = data;
+				$location.path('/');
+			})
+			.error(function(data, status, headers, config) {
+				$scope.statusMessage = data;
+			});
 	};
 
 	$scope.register = function(newUser) {
@@ -19,18 +28,13 @@ angular.module('webapp')
 			return null;
 		}
 
+		$http.post('/user/register', $scope.newUser)
+			.success(function(data) {
+				$rootScope.user = data;
+				$location.path('/');
+			})
+			.error(function(data, status, headers, config) {
+				$scope.statusMessage = data;
+			});
 	};
-
-	$scope.connectTwitter = function() {
-		console.log("Connecting to twitter");
-		$location.path('/auth/twitter');
-	};
-
-	$scope.connectFacebook = function() {
-		console.log("Connecting to facebook");
-		$location.path('/auth/facebook');
-	};
-
-
-
 });

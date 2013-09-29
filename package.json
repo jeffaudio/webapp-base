@@ -9,8 +9,8 @@
 	"dependencies": {
 		"express": "3.x",
 		"connect-timeout": "0.0.1",
-		"connect-mongo": "~0.3.2",
-		"mongoose": "~3.6.11",
+		"connect-mongo": "latest",
+		"mongoose": "latest",
 		"async": "~0.2.8",
 		"passport": "latest",
 		"passport-local": "latest",

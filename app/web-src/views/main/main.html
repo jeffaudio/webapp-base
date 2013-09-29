@@ -4,11 +4,12 @@
 
 <h2>{{loggedUser.username}}</h2>
 <ul>
-	<li>User ID: {{loggedUser._id}}
-	<li>Facebook ID: {{loggedUser.facebook.facebookId}}
-	<li>Facebook Access Token: {{loggedUser.facebook.accessToken}}
-	<li>Twitter ID: {{loggedUser.twitter.twitterId}}
-	<li>Twitter Access Token: {{logged.twitter.accessToken}}
+	<li>Username: {{$root.user.username}}
+	<li>User ID: {{$root.user._id}}
+	<li>Facebook ID: {{$root.user.facebook.facebookId}}
+	<li>Facebook Access Token: {{$root.user.facebook.accessToken}}
+	<li>Twitter ID: {{$root.user.twitter.twitterId}}
+	<li>Twitter Access Token: {{$root.user.twitter.token}}
 </ul>
 
 <p>{{statusMessage}}</p>
@@ -28,5 +29,5 @@
 	<button ng-click="register()">Register</button>
 </form>
 
-<button ng-click="connectTwitter()">Connect with Twitter</button>
-<button ng-click="connectFacebook()">Connect with Facebook</button>
+<p><a href="/auth/twitter" target="_self">Connect with Twitter</a>
+<p><a href="/auth/facebook" target="_self">Connect with Facebook</a>
